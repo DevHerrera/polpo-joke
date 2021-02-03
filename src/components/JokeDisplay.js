@@ -60,7 +60,7 @@ class JokeDisplay extends Component {
 					</h1>
 					<p className="mt-3 mb-4">
 						We provide an infinite ammount of jokes so you can always laugh and smile, with 
-						<span className="fw-medium"> <strong>Polpo Joke </strong></span>
+						<span className="fw-medium"> <strong> Polpo Joke </strong></span>
 						discover funny jokes from 
 						<a href=" https://api.chucknorris.io/"> https://api.chucknorris.io/</a>
 					</p>
