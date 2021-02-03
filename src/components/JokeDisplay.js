@@ -55,8 +55,7 @@ class JokeDisplay extends Component {
 			<div className="row">
 				<div className="col-md-7 col-lg-6 mt-5 text-center text-md-start">
 					<h1 className="fw-medium">
-						It's time to laugh<br></br>a lot with 
-						<span class="fw-bold">Polpo Joke.</span>
+						It's time to laugh<br></br>a lot with <span class="fw-bold"> Polpo Joke.</span>
 					</h1>
 					<p className="mt-3 mb-4">
 						We provide an infinite ammount of jokes so you can always laugh and smile, with <strong> Polpo Joke </strong>
