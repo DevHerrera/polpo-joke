@@ -31,22 +31,17 @@ class JokeDisplay extends Component {
 	}
 
 	// Function to retrieve joke from API
-	getJoke = () => {
+	async getJoke ()  {
+		// endpoint wihtout category
 		let apiURL = "https://api.chucknorris.io/jokes/random"
-		// if category is not random, edit apiURL
+		// if category is not random, edit endpoint to add category
 		if (this.state.selectedCategory !== 'random') {
 			apiURL = `https://api.chucknorris.io/jokes/random?category=${this.state.selectedCategory}`
 		}
-		fetch(apiURL)
-		.then(response => {
-			return response.json()
-		})
-		.then(data => {
-			// update property
-			this.setState({
-				jokeData: data.value
-			}
-			)
+		let response = await fetch(apiURL)
+		let jokeData = await response.json()
+		this.setState({
+			jokeData: jokeData.value
 		})
 	}
 	// Fucntion to update selected Category
@@ -55,24 +50,24 @@ class JokeDisplay extends Component {
 			selectedCategory: value
 		})
 	}
-
-	// <JokeCategorySelector onChange={data => this.changeCategory(data)}/>
-
-
 	render () {
 		return (
 			<div className="row">
 				<div className="col-md-7 col-lg-6 mt-5 text-center text-md-start">
-								<h1 className="fw-medium">It's time to laugh<br></br>a lot with <span class="fw-bold">Polpo Joke.</span>
-								</h1>
-								<p className="mt-3 mb-4">
-									We provide an infinite ammount of jokes so you can always laugh and smile, with 
-									<span className="fw-medium"> <strong>Polpo Joke </strong></span>
-									discover funny jokes from <a href=" https://api.chucknorris.io/"> https://api.chucknorris.io/</a>
-								</p>
-								{/* Joke category selector component, parameters: changeCategory */}
-								<JokeCategorySelector onChange={data => this.changeCategory(data)}/>
-								<a onClick={this.onClick} className="btn btn-lg mt-5 btn-danger hover-top btn-glow" href="#">Generate Joke</a>
+					<h1 className="fw-medium">
+						It's time to laugh<br></br>a lot with 
+						<span class="fw-bold">Polpo Joke.</span>
+					</h1>
+					<p className="mt-3 mb-4">
+						We provide an infinite ammount of jokes so you can always laugh and smile, with 
+						<span className="fw-medium"> <strong>Polpo Joke </strong></span>
+						discover funny jokes from 
+						<a href=" https://api.chucknorris.io/"> https://api.chucknorris.io/</a>
+					</p>
+					{/* Joke category selector component, parameters: changeCategory */}
+					<JokeCategorySelector onChange={data => this.changeCategory(data)}/>
+					<a onClick={this.onClick} 
+						className="btn btn-lg mt-5 btn-danger hover-top btn-glow" href="#">Generate Joke</a>
 				</div>
 				<div className="col-md-5 mt-5 text-center text-md-start">
 					<div id="jokeDiv">

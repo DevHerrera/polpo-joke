@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class JokeCategorySelector extends Component {
 	constructor() {
 		super();
@@ -11,44 +10,29 @@ class JokeCategorySelector extends Component {
 		};
 	}
 
-	
-	
-	// onChange = function (event) {
-	// 	this.setState({
-	// 		selectedCategory: event.target.value
-	// 	})
-	// }
-
-	// Once component has been mounted, fetch API and fill categories property
-	componentDidMount () {
+	async fecthData () {
 		let initialCategories = [
 			"random"
 		]
 		let apiURL = "https://api.chucknorris.io/jokes/categories"
 		// retrieve values from API
-		fetch(apiURL)
-			.then(response => {
-				return response.json()
-			})
-			.then(data => {
-				// store retrieved data into array
-				initialCategories = data.map((category) => {
-					return category
-				})
-				// add random at start of array as default option
-				initialCategories.unshift("random")
-				this.setState({
-						categories: initialCategories,
-				})
+		let response = await fetch(apiURL)
+		initialCategories = await response.json()
+		// add 'random' at start of array as default option
+		initialCategories.unshift("random")
+		this.setState({
+			categories: initialCategories
 		})
+	}
 
+	// Once component has been mounted, fetch API and fill categories property
+	async componentDidMount () {
+		await this.fecthData()
 	}
 
 	render () {
 		// get categories from state
 		let categories = this.state.categories
-		
-
 		// for each category create a html 'option' element
 		let optionItems = categories.map(category => {
 			return <option key={category}>{category}</option>
