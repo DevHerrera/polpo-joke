@@ -16,4 +16,6 @@ app.get('/asd', function (req, res) {
 
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(3000, () => {
+	console.log(`App running on port 3000`) 
+});
