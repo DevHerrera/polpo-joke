@@ -1,6 +1,7 @@
 # About this project
 
 This project is a solution to the problem given by [Polpo Coding Challenge](https://github.com/polpocr/coding-challenge)
+To implement this solution I used bootstrap 5 as the CSS library and Express.js to serve and render the react application.
 
 Don't forget to run `npm install`
 
